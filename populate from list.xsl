@@ -84,4 +84,16 @@
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
+    
+    <!--  state preservation  -->
+    <xsl:template match="tei:rs[@type='statPreserv']">
+        <xsl:copy>
+            <xsl:copy-of select="@*[not(local-name()='ref')]"/>
+            <xsl:attribute name="ref">
+                <xsl:value-of select="document('eagle-vocabulary-state-of-preservation.rdf')//skos:prefLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
+                <xsl:value-of select="document('eagle-vocabulary-state-of-preservation.rdf')//skos:altLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
 </xsl:stylesheet>
