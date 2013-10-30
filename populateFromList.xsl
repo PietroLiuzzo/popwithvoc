@@ -64,7 +64,7 @@
 <!--  Dating Criteria  -->
     <xsl:template match="tei:origDate">
         <xsl:copy>
-            <xsl:copy-of select="@*"/>
+            <xsl:copy-of select="@*[not(local-name()='period')]"/>
             <xsl:if test="text()"><xsl:attribute name="period">
                 <xsl:value-of select="document('eagle-vocabulary-dating-criteria.rdf')//skos:prefLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
                 <xsl:value-of select="document('eagle-vocabulary-dating-criteria.rdf')//skos:altLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
