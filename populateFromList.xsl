@@ -16,10 +16,10 @@
     <xsl:template match="tei:objectType">
            <xsl:copy>
        <xsl:copy-of select="@*[not(local-name()='ref')]"/>
-        <xsl:attribute name="ref">
+        <xsl:choose><xsl:when test="tei:objectType/text()"><xsl:attribute name="ref">
             <xsl:value-of select="document('eagle-vocabulary-object-type.rdf')//skos:prefLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
             <xsl:value-of select="document('eagle-vocabulary-object-type.rdf')//skos:altLabel[lower-case(.)=lower-case(current())]/parent::skos:Concept/@rdf:about"/>
-        </xsl:attribute>
+        </xsl:attribute></xsl:when></xsl:choose>
                <xsl:apply-templates/>
            </xsl:copy>
     </xsl:template>
