@@ -61,7 +61,7 @@
         </xsl:copy>
     </xsl:template>
 
-<!--  Dating Criteria  -->
+<!--  Dating Criteria
     <xsl:template match="tei:origDate">
         <xsl:copy>
             <xsl:copy-of select="@*[not(local-name()='period')]"/>
@@ -71,7 +71,7 @@
             </xsl:attribute></xsl:if>
             <xsl:apply-templates/>
         </xsl:copy>
-    </xsl:template>
+    </xsl:template> -->
     
 <!--  Decoration  -->
     <xsl:template match="tei:rs[@type='decoration']">
